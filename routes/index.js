@@ -9,5 +9,9 @@ router.get('/add-user', function(req, res, next) {
   console.log("hii");
   res.render('add-user');
 });
+router.get('/user-details', function(req, res, next) {
+  console.log("hii");
+  res.render('user-details');
+});
 
 module.exports = router;
