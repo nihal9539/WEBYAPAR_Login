@@ -16,7 +16,10 @@ const UserSchema = mongoose.Schema({
     photo: {
         type: String
     },
-    accept: Boolean
+    accept: {
+        type: Boolean,
+        default: false
+    }
 
 },
     {
