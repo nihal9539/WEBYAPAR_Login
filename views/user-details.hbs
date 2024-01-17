@@ -14,42 +14,23 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each user}}
                 <tr>
-                    <td>5644</td>
-                    <td>Nihal</td>
+                    <td>{{this.userId}}</td>
+                    <td>{{this.accept}}</td>
                     <td>Photo</td>
                     <td class="d-flex flex-row justify-content-center gap-2">
-
-                        <button class="btn btn-primary">Done</button>
-                        <button class="btn border-primary btn-white text-primary ">Delete</button>
-
-
+                        {{#if this.accept}}
+                       
+                        {{else}}
+                        <a href="accept-user/{{this._id}}" class="btn btn-primary">Done</a>
+                        {{/if}}
+                        <a href="delete-user/{{this._id}}" class="btn border-primary btn-white text-primary">Delete</a>
+                
                     </td>
                 </tr>
-                <tr>
-                    <td>5655</td>
-                    <td>Hafiz</td>
-                    <td>Photo</td>
-                    <td class="d-flex flex-row justify-content-center gap-2">
+                {{/each}}
 
-                        <button class="btn btn-primary">Done</button>
-                        <button class="btn border-primary btn-white text-primary ">Delete</button>
-
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>User Id</td>
-                    <td>Name</td>
-                    <td>Photo</td>
-                    <td class="d-flex flex-row justify-content-center gap-2">
-
-                        <button class="btn btn-primary">Done</button>
-                        <button class="btn border-primary btn-white text-primary ">Delete</button>
-
-
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>

@@ -3,6 +3,7 @@ var router = express.Router();
 const bcrypt = require('bcrypt');
 const AdmindModel = require('../model/admin-model');
 const UserModel = require('../model/User-model');
+const { ObjectId } = require('mongodb');
 
 
 /* GET home page. */
@@ -15,22 +16,7 @@ router.get('/add-user', async function (req, res, next) {
   res.render('add-user');
 });
 
-// Login Admin
-// router.post('/signup', async (req, res) => {
-//   const salt = await bcrypt.genSalt(10)
-//   const hashPassword = await bcrypt.hash(req.body.password, salt)
-//   req.body.password = hashPassword
 
-//   const admin = new AdmindModel(req.body)
-//   console.log(admin);
-//   try {
-//     await admin.save()
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// })
-
-// Create User
 router.post('/add-user', async (req, res) => {
   console.log(req.body);
   const salt = await bcrypt.genSalt(10)
@@ -57,14 +43,45 @@ router.post('/login', async (req, res) => {
 
   if (validity) {
     res.redirect('add-user');
-  }else{
-    res.render('index',{"error":"check password"});
+  } else {
+    res.render('index', { "error": "check password" });
   }
 
 })
-router.get('/user-details', function (req, res, next) {
-  console.log("hii");
-  res.render('user-details');
+router.get('/accept-user/:id', async (req, res) => {
+  const id = req.params.id
+  try {
+
+    const user = await UserModel.findByIdAndUpdate(id, { accept: true })
+    if (user) {
+      console.log(user);
+      res.redirect('/user-details')
+
+    }
+  } catch (error) {
+
+  }
+})
+router.get('/delete-user/:id', async (req, res) => {
+  const id = req.params.id
+  try {
+
+    const user = await UserModel.findByIdAndDelete(id)
+    if (user) {
+      console.log(user);
+      res.redirect('/user-details')
+
+    }
+  } catch (error) {
+
+  }
+
+
+})
+router.get('/user-details', async function (req, res, next) {
+  const user = await UserModel.find();
+  console.log(user);
+  res.render('user-details', { user });
 });
 
 module.exports = router;

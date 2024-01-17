@@ -25,32 +25,42 @@
         </div>
     </div>
 </div>
+
 <div class="p-2 d-flex flex-column">
-    <button class="btn border-primary align-self-end btn-white text-primary "  type="button"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">View</button>
+    <button class="btn border-primary align-self-end btn-white text-primary " type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">View</button>
     <div class="  cropper-bg d-flex flex-column justify-content-center align-items-center " style="height: 100vh;">
         <div class=" col-6 d-flex flex-column gap-4 justify-content-center align-items-center ">
-            <form class="d-flex flex-column gap-4 w-50" enctype="multipart/form-data">
+            <form class="d-flex flex-column gap-4 w-50" method="post" enctype="multipart/form-data">
                 <div class="form-group  ">
                     <label for="">Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    {{#if userDeatils}}
+                    <input type="email" value="" name="name" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+
+                    {{else}}
+                    <input type="email" value="{{this.name}}" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+
+
+                    {{/if}}
                 </div>
                 <div class="form-group">
                     <label for="">Photo</label>
-               
 
-    
-                          <input type="file" id="image" style="display: none;" accept="image/*" onchange="loadFile(event)">
+
+
+                    <input type="file" id="image" style="display: none;" accept="image/*" onchange="loadFile(event)">
                     <label for="image" class="w-100">
-                        <div class="border-light " 
+                        <div class="border-light "
                             style="height: 280px;border-style: dotted;background-color: rgba(205, 205, 205, 1);"></div>
-    
+
                     </label>
                 </div>
-            
 
- <button class="btn btn-primary  "  type="button"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Upload</button>              
+
+                <a class="btn btn-primary " href="/add-details/{{this._id}}" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Upload</a>
 
             </form>
 
@@ -59,13 +69,15 @@
     </div>
 
 
+
+
 </div>
 <script>
     var loadFile = function (event) {
         var image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
     };
- 
+
 </script>
 
 {{!--
