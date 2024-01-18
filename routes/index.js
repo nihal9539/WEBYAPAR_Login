@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const AdmindModel = require('../model/admin-model');
 const UserModel = require('../model/User-model');
 const { ObjectId } = require('mongodb');
+const Cropper = require('cropperjs');
 
 
 /* GET home page. */
@@ -50,6 +51,8 @@ router.post('/login', async (req, res) => {
 })
 router.get('/accept-user/:id', async (req, res) => {
   const id = req.params.id
+  const cropper = Cropper()
+        console.log(cropper)
   try {
 
     const user = await UserModel.findByIdAndUpdate(id, { accept: true })
