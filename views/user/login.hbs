@@ -1,6 +1,6 @@
-<div class=" d-flex flex-row">
+<div class=" row">
 
-    <div class="col-7  " style="background-color:rgba(5, 2, 89, 1) ;height: 100vh;">
+    <div class="col-md-6 col-sm-12  " style="background-color:rgba(5, 2, 89, 1) ;">
         <div class=" h-100 d-flex align-items-center  justify-content-center">
             <div class="z-1 round-1 position-absolute"></div>
             <div class="z-3 round-3 position-absolute"></div>
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div class="col-5 d-flex flex-column gap-4 justify-content-center align-items-center">
+    <div class="col-md-6 col-sm-12 d-flex flex-column gap-4 justify-content-center align-items-center">
         <h2>User Login</h2>
         <form class="d-flex flex-column gap-4 w-50" accept="/users/login" method="post">
             <div class="form-group  ">
@@ -36,13 +36,22 @@
 </div>
 
 <style>
-    .round-1 {
-        width: 180px;
 
-        height: 180px;
+
+.col-sm-12 {
+    height: 100vh;
+}
+.login{
+    width: 50%;
+    padding: 5rem;
+}
+   
+.round-1 {
+       
+        
         padding: 8rem;
         border-radius: 9999px;
-        border: transparent solid 8px;
+        border: transparent solid 6px;
         opacity: .4;
         background: linear-gradient(rgba(5, 2, 89, 1) 0 0) padding-box,
             linear-gradient(to right, rgba(5, 2, 89, 1), #8c41fb) border-box;
@@ -50,11 +59,10 @@
     }
 
     .round-2 {
-        width: 180px;
-        height: 180px;
+      
         padding: 11rem;
         border-radius: 9999px;
-        border: transparent solid 8px;
+        border: transparent solid 6px;
         opacity: .4;
         background: linear-gradient(rgba(5, 2, 89, 1) 0 0) padding-box,
             linear-gradient(to right, rgba(5, 2, 89, 1), #8c41fb) border-box;
@@ -63,13 +71,10 @@
 
     .round-3 {
 
-        width: 180px;
-
-
-        height: 180px;
+      
         padding: 15rem;
         border-radius: 9999px;
-        border: transparent solid 8px;
+        border: transparent solid 6px;
         opacity: .4;
         background: linear-gradient(rgba(5, 2, 89, 1) 0 0) padding-box,
             linear-gradient(to right, rgba(5, 2, 89, 1), #8c41fb) border-box;
@@ -77,4 +82,26 @@
 
 
     }
+    
+      @media screen and (max-width: 770px) {
+      .col-sm-12 {
+       height: 50vh;
+      }
+      .round-1{
+        padding: 6rem;
+      }
+      .round-2{
+        padding: 8rem;
+      }
+      .round-3{
+        padding: 10rem;
+      }
+      .w{
+        padding: 2px;
+      }
+      .login{
+        padding: 2rem;
+      }
+    }
+    
 </style>
