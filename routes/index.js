@@ -12,9 +12,10 @@ router.get('/', function (req, res, next) {
   res.render('index',);
 });
 router.get('/add-user', async function (req, res, next) {
+  const user = await UserModel.find();
+  console.log(user);
 
-
-  res.render('add-user');
+  res.render('add-user',{user});
 });
 
 

@@ -1,32 +1,92 @@
-<div class=" d-flex flex-row">
+<div class=" row">
 
-    <div class="col-7  " style="background-color:rgba(5, 2, 89, 1) ;height: 100vh;">
-        <div class="w-100 h-100 d-flex align-items-center  justify-content-center">
-            <div class="d-flex align-items-center  p-5 col-6 justify-content-center bg-white rounded  ">
+    <div class="col-md-6 col-sm-12  he " style="background-color:rgba(5, 2, 89, 1) ;height: 100vh ;">
+        <div class=" h-100 d-flex align-items-center  justify-content-center">
+            {{!-- <div class="z-3 bg-black border-2 rounded border-danger" style="width: 100; height: 200;"></div> --}}
+            <div class="z-1 round-1 position-absolute"></div>
+            <div class="z-3 round-3 position-absolute"></div>
+            <div class="z-2 round-2 position-absolute"></div>
+            <div
+                class="d-flex align-items-center position-relative z-0 w p-5 w-25 justify-content-center bg-white rounded  ">
 
-            
-            <h3 style="color:rgba(5, 2, 89, 1) ;">LOGO</h3>
-        
+
+                <div class="">
+                    <h3 style="color:rgba(5, 2, 89, 1) ;" class="">LOGO</h3>
+                </div>
+
+
             </div>
         </div>
     </div>
-    <div class="col-5 d-flex flex-column gap-4 justify-content-center align-items-center">
+    <div class="col-md-6  col-sm-12  d-flex flex-column gap-4 justify-content-center align-items-center">
         <h2>Admin Login</h2>
         <form class="d-flex flex-column gap-4 w-50" action="/login" method="post">
             <div class="form-group  ">
 
-                <input type="text" required name="adminId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="User Id">
+                <input type="text" required name="adminId" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="User Id">
             </div>
             <div class="form-group">
-             
-                <input type="password" required name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+
+                <input type="password" required name="password" class="form-control" id="exampleInputPassword1"
+                    placeholder="Password">
             </div>
 
-            <input type="submit"   class="btn btn-primary" value="Login"/> 
+            <input type="submit" class="btn btn-primary" value="Login" />
         </form>
 
     </div>
 </div>
 
 
+<style>
+
+   
+.round-1 {
+        width: 180px;
+
+        height: 180px;
+        
+        padding: 8rem;
+        border-radius: 9999px;
+        border: transparent solid 8px;
+        opacity: .4;
+        background: linear-gradient(rgba(5, 2, 89, 1) 0 0) padding-box,
+            linear-gradient(to right, rgba(5, 2, 89, 1), #8c41fb) border-box;
+        border-color: transparent;
+    }
+
+    .round-2 {
+        width: 180px;
+        height: 180px;
+        padding: 11rem;
+        border-radius: 9999px;
+        border: transparent solid 8px;
+        opacity: .4;
+        background: linear-gradient(rgba(5, 2, 89, 1) 0 0) padding-box,
+            linear-gradient(to right, rgba(5, 2, 89, 1), #8c41fb) border-box;
+        border-color: transparent;
+    }
+
+    .round-3 {
+
+        width: 180px;
+
+
+        height: 180px;
+        padding: 15rem;
+        border-radius: 9999px;
+        border: transparent solid 8px;
+        opacity: .4;
+        background: linear-gradient(rgba(5, 2, 89, 1) 0 0) padding-box,
+            linear-gradient(to right, rgba(5, 2, 89, 1), #8c41fb) border-box;
+        border-color: transparent;
+
+
+    }
+     @media only screen and (max-width:700px){
+        .he{
+            height: 50vh;
+        }
+    }
+</style>

@@ -3,23 +3,10 @@ const UserdModel = require('../model/User-model');
 var router = express.Router();
 const bcrypt = require('bcrypt')
 const multer = require('multer');
-const fs = require('fs');
-const Cropper = require('cropperjs');
 
 
 // Multer for storage and file name setting
-let storage = multer.diskStorage({
-  destination: 'public/image',
-  filename: (req, file, cb) => {
-    // cb(null,Date.now(+file+originalname))
-    cb(null, file.originalname)
-  }
-})
 
-// for uploading
-let upload = multer({
-  storage: storage
-})
 
 /* GET users listing. */
 router.get('/login', function (req, res, next) {

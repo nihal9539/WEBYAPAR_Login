@@ -1,6 +1,6 @@
 <div class="p-5 d-flex flex-column gap-5">
     <div>
-        <button class="btn border-primary btn-white text-primary ">&lt Back</button>
+        <a href="/add-user" class="btn border-primary btn-white text-primary ">&lt Back</a>
     </div>
 
     <div>
@@ -17,8 +17,8 @@
                 {{#each user}}
                 <tr>
                     <td>{{this.userId}}</td>
-                    <td>{{this.accept}}</td>
-                    <td>Photo</td>
+                    <td>{{this.name}}</td>
+                    <td><img src="/image/{{this._id}}.webp" width="50px" height="50px" alt=""></td>
                     <td class="d-flex flex-row justify-content-center gap-2">
                         {{#if this.accept}}
                        

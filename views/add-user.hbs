@@ -6,31 +6,31 @@
         <form class="d-flex flex-column gap-5 w-50" method="post" accept="/add-user">
             <div class="form-group  ">
 
-                <input type="text" name="userId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email">
+                <input type="text" name="userId" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
 
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                    placeholder="Password">
             </div>
 
-            <input href="/add-user" type="submit" class="btn btn-primary"/>
+            <input href="/add-user" type="submit" class="btn btn-primary" />
         </form>
 
     </div>
     <div class="col-6 d-flex flex-column gap-4 justify-content-center align-items-center">
         <h2>Admin Login</h2>
         <div class="d-flex flex-column gap-4 w-50">
+            {{#each user}}
 
             <div class="form-group position-relative p-5 rounded" style="background-color: rgba(205, 205, 205, 1);">
-             
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email">
-            </div>
-            <div class="form-group  p-5 rounded" style="background-color: rgba(205, 205, 205, 1);">
 
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="email" class="form-control" value="{{this.userId}}"="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter email">
             </div>
+
+            {{/each}}
 
             <a href="/user-details" class="btn btn-primary w-25 align-self-end"> view</a>
         </div>
