@@ -13,7 +13,7 @@ const UserSchema = mongoose.Schema({
         require: true
     },
     name: String,
-    photo: {
+    image: {
         type: String
     },
     accept: {
