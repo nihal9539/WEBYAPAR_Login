@@ -42,7 +42,12 @@ router.post('/login', async (req, res) => {
   }
 })
 router.get('/detail-upload', function (req, res, next) {
+  console.log(res.data);
   res.render("user/detail-upload");
+});
+router.get('/user-list', function (req, res, next) {
+ 
+  res.redirect('/user-details')
 });
 router.post('/detail-upload/:id', async (req, res,) => {
   const id = req.params.id
@@ -63,9 +68,7 @@ router.post('/detail-upload/:id', async (req, res,) => {
     const userDeatils = await UserdModel.findByIdAndUpdate(id,
       { $set: req.body },
       { new: true })
-    // console.log(userDeatils);
-    console.log(userDeatils._id.toString());
-         console.log(userDeatils);
+   
     res.render('user/detail-upload', { userDeatils,id });
 
   } catch (error) {

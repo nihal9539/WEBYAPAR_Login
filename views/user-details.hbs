@@ -5,7 +5,8 @@
 
     <div class="table">
         <div class="d-flex flex-column w-100 ">
-            <div class=" w-100 table-head" style="background: linear-gradient(0deg, #CDCDCD, #CDCDCD),linear-gradient(0deg, #FFFFFF, #FFFFFF); font-size: 1.2rem;">
+            <div class=" w-100 table-head"
+                style="background: linear-gradient(0deg, #CDCDCD, #CDCDCD),linear-gradient(0deg, #FFFFFF, #FFFFFF); font-size: 1.2rem;">
                 <div class=" p-3 border border-dark w-100">user Id</div>
                 <div class="p-3 border border-dark w-100">name</div>
             </div>
@@ -18,7 +19,8 @@
         </div>
 
         <div class="d-flex flex-column w-100 ">
-            <div class=" w-100 table-head" style="background: linear-gradient(0deg, #CDCDCD, #CDCDCD),linear-gradient(0deg, #FFFFFF, #FFFFFF); font-size: 1.2rem;">
+            <div class=" w-100 table-head"
+                style="background: linear-gradient(0deg, #CDCDCD, #CDCDCD),linear-gradient(0deg, #FFFFFF, #FFFFFF); font-size: 1.2rem;">
                 <div class=" p-3 border border-dark w-100">Photo</div>
                 <div class="p-3 border border-dark w-100">name</div>
             </div>
@@ -27,13 +29,18 @@
                 <div class="p-3 border border-dark w-100">
                     <img src="/image/{{this._id}}.webp" width="50px" height="40px" alt="">
                 </div>
-                <div class="p-3 border border-dark w-100">
+                <div class="p-3 border d-flex flex-row g-2 border-dark w-100">
                     {{#if this.accept}}
-                            <div></div>
+                    <div></div>
                     {{else}}
-                    <a href="accept-user/{{this._id}}" class="btn btn-primary">Done</a>
+                    <form action="/accept-user/{{this._id}}" method="post" class="w-50">
+
+                            <input type="submit" class="btn btn-primary w-75" name="" id="" value="Done">
+                        </form>
                     {{/if}}
-                    <a href="delete-user/{{this._id}}" class="btn border-primary btn-white text-primary">Delete</a>
+                    <div class="w-50">
+                        <a href="delete-user/{{this._id}}" class="btn border-primary btn-white text-primary w-75">Delete</a>
+                    </div>
                 </div>
             </div>
             {{/each}}
@@ -43,86 +50,109 @@
     {{#each user}}
     <div class="table2">
         <div class="d-flex flex-column w-100 ">
-            <div class=" w-100 table-head2" style="background: linear-gradient(0deg, #CDCDCD, #CDCDCD),linear-gradient(0deg, #FFFFFF, #FFFFFF); font-size: 1.2rem;">
+            <div class=" w-100 table-head2"
+                style="background: linear-gradient(0deg, #CDCDCD, #CDCDCD),linear-gradient(0deg, #FFFFFF, #FFFFFF); font-size: 1.2rem;">
                 <div class=" p-3 border  w-100">{{this.userId}}</div>
                 <hr>
                 <div class="p-3 border  w-100">{{this.name}}</div>
             </div>
             <div class="d-flex flex-row  w-100 justify-content-around bg-white">
-                <div class="p-4  w-100 "><span class="me-2">Photo:</span> <img src="/image/{{this._id}}.webp" width="50px" height="40px" alt=""></div>
+                <div class="p-4  w-100 "><span class="me-2">Photo:</span> <img src="/image/{{this._id}}.webp"
+                        width="50px" height="40px" alt=""></div>
                 <div class="p-4  w-100 d-flex flex-column">
                     <span class="me-2">Action</span>
-                    <div class="d-flex flex-row">
+                    <div class="d-flex flex-row gap-1">
                         {{#if this.accept}}
 
-                    {{else}}
-                    <a href="accept-user/{{this._id}}" class="btn btn-primary w-50">Done</a>
-                    {{/if}}
-                    <a href="delete-user/{{this._id}}" class="btn border-primary btn-white text-primary w-50">Delete</a>
+                        {{else}}
+                        <form accept="/accept-user" method="post" class="w-100">
+
+                            <input type="submit" class="btn btn-primary w-100" name="" id="" value="Done">
+                        </form>
+                        {{/if}}
+                        <a href="delete-user/{{this._id}}"
+                            class="btn border-primary btn-white text-primary w-100">Delete</a>
                     </div>
                 </div>
 
             </div>
 
-         
-            </div>
-            {{/each}}
-
-
-
 
         </div>
+        {{/each}}
 
-        <style>
-            .table2 {
-                display: none;
-            }
 
-            .table-head {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
+        {{!-- <form class="d-flex flex-column gap-4 w-50" accept="/users/login" method="post">
+            <div class="form-group  ">
 
-            }
-            .table-head2 {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                border: solid 2px;
+                <input type="text" name="userId" required class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="User Id">
+            </div>
+            <div class="form-group">
 
-            }
+                <input type="password" required name="password" class="form-control" id="exampleInputPassword1"
+                    placeholder="Password">
+            </div>
 
+            <input type="submit" class="btn btn-primary" value="Login" />
+        </form> --}}
+
+
+    </div>
+
+    <style>
+        .table2 {
+            display: none;
+        }
+
+        .table-head {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+        }
+
+        .table-head2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            border: solid 2px;
+
+        }
+
+        .table {
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        @media screen and (max-width:770px) {
             .table {
+
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            hr {
+                height: 70%;
+                background-color: black;
+                align-self: center;
+                padding: 1px;
+            }
+
+            .table2 {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
+                gap: 1rem;
 
             }
 
-            @media screen and (max-width:770px) {
-                .table {
-
-                    display: none;
-                    flex-direction: column;
-                    gap: 1rem;
-                }
-                hr{
-                    height: 70%;
-                    background-color: black;
-                    align-self: center;
-                    padding: 1px;
-                }
-
-                .table2 {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                 
-                }
-                .fullpage{
-                    background-color: #e5e5e5;
-                    height: 100vh;
-
-                }
+            .fullpage {
+                background-color: #e5e5e5;
+                height: 100vh;
 
             }
-        </style>
+
+        }
+    </style>

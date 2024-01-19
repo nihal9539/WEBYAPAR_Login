@@ -1,7 +1,7 @@
 <div class="offcanvas  canvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-        <button type="button" class="btn border-primary align-self-end btn-white text-primary"
-            data-bs-dismiss="offcanvas" aria-label="Close">Back</button>
+        <a href="/users/user-list" class="btn border-primary align-self-end btn-white text-primary"
+            aria-label="Close">Next</a>
     </div>
     <div class="offcanvas-body ">
         <div class="d-flex flex-column p-5 gap-4 w-100">
@@ -18,16 +18,16 @@
                 <label for="">Photo</label>
                 <input type="file" id="" style="display: none;">
 
-                <div class="w-100  align-items-center justify-content-center">  
-                    <div for="" class="img-div"
-                    style="border-style: dotted;height: 300px; width: 270px; ">
-                    {{#if userDeatils._id}}
-                    <img id="output" width="270" src="/image/{{id}}.webp" height="300" class="" />
-                    {{else}}
-                    <img id="output" width="270" height="300" class="" />
-                    {{/if}}
+                <div class="w-100 d-flex align-items-center justify-content-center">
+                    <div for="" class="img-div" style="border-style: dotted;height: 300px; width: 270px; ">
+                        {{#if userDeatils._id}}
+                        <img id="output" width="270" src="/image/{{id}}.webp" height="300" class="" />
+                        {{else}}
+                        <img id="output" width="270" height="300" class="" />
+                        {{/if}}
+                      
 
-                </div>
+                    </div>
                 </div>
             </div>
             {{#if userDeatils.accept}}
@@ -73,7 +73,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Submit</button>
+                <button type="submit" class="btn btn-primary w-100">Upload</button>
             </form>
 
         </div>
@@ -82,7 +82,7 @@
 
 
     <script>
-         
+
 
         var loadFile = function (event) {
             var image = document.getElementById('output');
@@ -102,12 +102,13 @@
         @media screen and (max-width:600px) {
             .canvas {
                 background-color: white;
-        
+
                 width: 100%;
                 right: 0;
                 height: 100vh;
             }
-            .img-div{
+
+            .img-div {
                 margin-left: 4rem;
             }
         }

@@ -16,7 +16,7 @@ router.get('/', function (req, res, next) {
 router.get('/add-user', async function (req, res, next) {
   const user = await UserModel.find();
 
-  user.map((dataa)=>{
+  user.map((dataa) => {
     console.log(dataa);
   })
 
@@ -42,7 +42,7 @@ router.post('/add-user', async (req, res) => {
   }
 })
 
-// admin login
+// admin signup
 
 // router.post('/register',async(req,res)=>{
 //   try {
@@ -53,52 +53,55 @@ router.post('/add-user', async (req, res) => {
 
 //     await user.save()
 //     console.log("added");
-    
+
 //   } catch (error) {
 //     console.log(error.message);
-    
+
 //   }
 // })
 router.post('/login', async (req, res) => {
   try {
     const user = await AdmindModel.findOne({ adminId: req.body.adminId })
     console.log(user);
-  if (user) {
-    const validity = await bcrypt.compare(req.body.password, user.password)
+    if (user) {
+      const validity = await bcrypt.compare(req.body.password, user.password)
 
-    if (validity) {
-      error.message = false
-      res.redirect('add-user');
+      if (validity) {
+        error.message = false
+        res.redirect('add-user');
+      } else {
+        error.message = true
+        res.redirect('/');
+      }
+
     } else {
       error.message = true
       res.redirect('/');
+
     }
-
-  } else {
-    error.message = true
-    res.redirect('/');
-
-  }
   } catch (error) {
     console.log(error);
     throw error
-    
+
   }
 
 
 })
-router.get('/accept-user/:id', async (req, res) => {
+router.post('/accept-user/:id', async (req, res) => {
   const id = req.params.id
+  console.log(id);
   try {
 
     const user = await UserModel.findByIdAndUpdate(id, { accept: true })
     if (user) {
-      console.log(user);
-      res.redirect('/user-details')
+      const userDeatils = await UserModel.findById(id)
+      res.render('user/detail-upload',{userDeatils,id})
 
+    } else {
+      console.log("user not found");
     }
   } catch (error) {
-
+    console.log(error.message);
   }
 })
 router.get('/delete-user/:id', async (req, res) => {
