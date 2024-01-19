@@ -3,8 +3,7 @@ var router = express.Router();
 const bcrypt = require('bcrypt');
 const AdmindModel = require('../model/admin-model');
 const UserModel = require('../model/User-model');
-const { ObjectId } = require('mongodb');
-const Cropper = require('cropperjs');
+
 
 
 /* GET home page. */
@@ -44,13 +43,31 @@ router.post('/add-user', async (req, res) => {
 })
 
 // admin login
+
+// router.post('/register',async(req,res)=>{
+//   try {
+//   const salt = await bcrypt.genSalt(10)
+//   const hashPassword = await bcrypt.hash(req.body.password, salt)
+//   req.body.password = hashPassword
+//   const user = new AdmindModel(req.body)
+
+//     await user.save()
+//     console.log("added");
+    
+//   } catch (error) {
+//     console.log(error.message);
+    
+//   }
+// })
 router.post('/login', async (req, res) => {
   try {
     const user = await AdmindModel.findOne({ adminId: req.body.adminId })
+    console.log(user);
   if (user) {
     const validity = await bcrypt.compare(req.body.password, user.password)
 
     if (validity) {
+      error.message = false
       res.redirect('add-user');
     } else {
       error.message = true
@@ -72,8 +89,6 @@ router.post('/login', async (req, res) => {
 })
 router.get('/accept-user/:id', async (req, res) => {
   const id = req.params.id
-  const cropper = Cropper()
-  console.log(cropper)
   try {
 
     const user = await UserModel.findByIdAndUpdate(id, { accept: true })
