@@ -5,7 +5,7 @@
             <div class="z-1 round-1 position-absolute"></div>
             <div class="z-3 round-3 position-absolute"></div>
             <div class="z-2 round-2 position-absolute"></div>
-            <div class="z-0 d-flex align-items-center position-fixed  p-5 w-25 justify-content-center bg-white rounded  ">
+            <div class="d-flex align-items-center position-relative z-0 w login justify-content-center bg-white rounded ">
 
 
                 <div>
@@ -17,6 +17,12 @@
     </div>
     <div class="col-md-6 col-sm-12 d-flex flex-column gap-4 justify-content-center align-items-center">
         <h2>User Login</h2>
+        {{#if message}}
+        <p class="text-danger">Check username and password</p>
+
+        {{else}}
+        
+        {{/if}}
         <form class="d-flex flex-column gap-4 w-50" accept="/users/login" method="post">
             <div class="form-group  ">
 
@@ -43,7 +49,7 @@
 }
 .login{
     width: 50%;
-    padding: 5rem;
+    padding: 4rem;
 }
    
 .round-1 {

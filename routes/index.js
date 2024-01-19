@@ -8,14 +8,20 @@ const Cropper = require('cropperjs');
 
 
 /* GET home page. */
+var error = {
+  message: false
+}
 router.get('/', function (req, res, next) {
-  res.render('index',);
+  res.render('index', error);
 });
 router.get('/add-user', async function (req, res, next) {
   const user = await UserModel.find();
-  console.log(user);
 
-  res.render('add-user',{user});
+  user.map((dataa)=>{
+    console.log(dataa);
+  })
+
+  res.render('add-user', { user });
 });
 
 
@@ -39,21 +45,35 @@ router.post('/add-user', async (req, res) => {
 
 // admin login
 router.post('/login', async (req, res) => {
-  console.log("ho");
-  const user = await AdmindModel.findOne({ adminId: req.body.adminId })
-  const validity = await bcrypt.compare(req.body.password, user.password)
+  try {
+    const user = await AdmindModel.findOne({ adminId: req.body.adminId })
+  if (user) {
+    const validity = await bcrypt.compare(req.body.password, user.password)
 
-  if (validity) {
-    res.redirect('add-user');
+    if (validity) {
+      res.redirect('add-user');
+    } else {
+      error.message = true
+      res.redirect('/');
+    }
+
   } else {
-    res.render('index', { "error": "check password" });
+    error.message = true
+    res.redirect('/');
+
   }
+  } catch (error) {
+    console.log(error);
+    throw error
+    
+  }
+
 
 })
 router.get('/accept-user/:id', async (req, res) => {
   const id = req.params.id
   const cropper = Cropper()
-        console.log(cropper)
+  console.log(cropper)
   try {
 
     const user = await UserModel.findByIdAndUpdate(id, { accept: true })
@@ -84,7 +104,7 @@ router.get('/delete-user/:id', async (req, res) => {
 })
 router.get('/user-details', async function (req, res, next) {
   const user = await UserModel.find();
-  console.log(user);
+
   res.render('user-details', { user });
 });
 

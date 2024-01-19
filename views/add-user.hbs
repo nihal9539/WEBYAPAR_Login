@@ -1,7 +1,7 @@
-<div class=" row  justify-content-center align-items-center" style="height: 100vh;">
+<div class=" row  justify-content-center align-items-center">
 
 
-    <div class="col-md-6 col-sm-12 d-flex flex-column gap-5 justify-content-center align-items-center">
+    <div class="col-md-6 height  d-flex flex-column gap-5 justify-content-center align-items-center">
         <h2>Create User</h2>
         <form class="d-flex flex-column gap-5 w-50" method="post" accept="/add-user">
             <div class="form-group  ">
@@ -19,15 +19,16 @@
         </form>
 
     </div>
-    <div class="col-md-6 col-sm-12 d-flex flex-column gap-4 justify-content-center align-items-center">
+    <div class="col-md-6 height  d-flex flex-column gap-4 justify-content-center align-items-center">
         <h2>Admin Login</h2>
         <div class="d-flex flex-column gap-4 w-50">
             {{#each user}}
 
             <div class="form-group position-relative p-5 rounded" style="background-color: rgba(205, 205, 205, 1);">
 
-                <input type="email" class="form-control" value="{{this.userId}}"="exampleInputEmail1"
+                <input type="email" class="form-control bg-white" disabled value="{{this.userId}}"="exampleInputEmail1"
                     aria-describedby="emailHelp" placeholder="Enter email">
+                {{!-- <h1 class="form-control">{{this.userId}}</h1> --}}
             </div>
 
             {{/each}}
@@ -41,14 +42,21 @@
 
 
 <style>
-    .col-md-12{
+    .height {
         height: 100vh;
     }
 
-    @media screen and(max-width:770px) {
-     .col-md-12{
-        padding-bottom: 5px;
-        height: 50vh;
-     }   
+    @media screen and (max-width:770px) {
+        .row{
+            display: flex;
+            flex-direction: column;
+            gap: 10rem
+        }
+        .height {
+           overflow: visible    ;
+            
+           
+            height: 50vh;
+        }
     }
 </style>

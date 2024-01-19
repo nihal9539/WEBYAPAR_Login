@@ -9,8 +9,12 @@ const multer = require('multer');
 
 
 /* GET users listing. */
+var error = {
+  message: false
+}
 router.get('/login', function (req, res, next) {
-  res.render("user/login");
+  // error.message={}
+  res.render("user/login",error);
 });
 router.post('/login', async (req, res) => {
   try {
@@ -23,10 +27,14 @@ router.post('/login', async (req, res) => {
       if (validity) {
         res.render('user/detail-upload', { userDeatils });
       } else {
-        res.redirect('login',);
+        res.redirect('login');
+        error.message = true
+        console.log(error);
       }
     } else {
-      res.render('login')
+      res.redirect('login')
+      error.message = true
+      console.log(error);
     }
 
   } catch (error) {
